@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🔥 LuckySolJackPot 🔥</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      background-image: url('https://i.ibb.co/mNvdWGL/fire-bg.gif'); /* Fire GIF background */
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      color: #ff6b00;
+      font-size: 3em;
+      margin-bottom: 0.5em;
+    }
+    .launch-time, .jackpot-info, .countdown {
+      margin: 20px 0;
+      font-size: 1.3em;
+    }
+    .highlight {
+      color: #ffd700;
+      font-weight: bold;
+    }
+    .countdown span {
+      font-size: 2em;
+      color: #ff4500;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+    a {
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>🔥 LuckySolJackPot 🔥</h1>
+    <p>Launching on <strong>@pumpdotfun</strong> at <span class="highlight">10 PM EST</span> tonight!</p>
+
+    <div class="jackpot-info">
+      🎟️ Every <span class="highlight">100K $LSOLJP</span> held = 1 ticket<br>
+      More tickets = higher chance of winning!
+    </div>
+
+    <div class="countdown">
+      ⏰ <strong>Next Jackpot In:</strong><br>
+      <span id="timer">Loading...</span>
+    </div>
+
+    <div class="jackpot-info">
+      💰 <strong>Next Jackpot Amount:</strong> <span class="highlight" id="jackpot-amount">5 SOL</span>
+    </div>
+
+    <p><a href="https://pump.fun" target="_blank">🚀 Launch on Pump.fun</a></p>
+
+    <div class="footer">
+      Powered by Solana | Follow us on Twitter @LuckySolJackPot
+    </div>
+  </div>
+
+  <script>
+    // ===== SET THE NEXT JACKPOT AMOUNT HERE =====
+    const nextJackpotSol = 5; // Change this number to update jackpot amount
+    document.getElementById('jackpot-amount').textContent = `${nextJackpotSol} SOL`;
+
+    // ===== COUNTDOWN TIMER (to the next full hour) =====
+    function updateTimer() {
+      const now = new Date();
+      const nextHour = new Date();
+      nextHour.setHours(now.getHours() + 1);
+      nextHour.setMinutes(0, 0, 0);
+
+      const diff = nextHour - now;
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('timer').textContent =
+        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  </script>
+</body>
+</html>
